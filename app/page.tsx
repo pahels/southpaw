@@ -14,26 +14,21 @@ export default function Home() {
   const cycle = () => setMode((m) => (m + 1) % 3);
 
   const bgClass = mode === 0 ? "bg-black" : "bg-white";
-  const showText = mode === 1;
+  const showText = false; // disabled for now
   const invertAlien = mode !== 0; // invert on white backgrounds (modes 1 & 2), normal on black
   const logoFilter = 'invert(0)';
-  const cursorFilter = mode === 0 ? 'invert(1)' : mode === 1 ? 'invert(0) sepia(1) saturate(10) hue-rotate(0deg)' : 'invert(0)'; // white on black, red on white+text, black on plain white
+  const isNight = mode === 0;
+  const toggleLabel = isNight ? "day" : "nite";
 
   return (
-    <div className={`${bgClass} min-h-screen flex justify-center relative overflow-hidden`}>
-      {/* Toggle button — no background, just the cursor image */}
+    <div className={`${bgClass} min-h-screen flex justify-center items-start relative overflow-hidden`}>
+      {/* Toggle button — day/nite text */}
       <button
         onClick={cycle}
         className="fixed top-4 right-4 z-[9999] inline-flex items-center justify-center"
-        style={{ background: 'none', border: 'none', padding: 0 }}
+        style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', fontFamily: 'inherit', fontSize: '14px', color: isNight ? 'white' : 'black', letterSpacing: '0.05em' }}
       >
-        <Image
-          src="/cursor2.png"
-          alt="cycle mode"
-          width={56}
-          height={56}
-          style={{ filter: cursorFilter }}
-        />
+        {toggleLabel}
       </button>
 
       {/* Repeating SOUTHPAW stack behind the alien */}
@@ -57,7 +52,7 @@ export default function Home() {
       )}
 
       {/* Alien on top */}
-      <Link href="/gallery" className="group block relative z-10">
+      <Link href="/gallery" className="group block relative z-10 w-[90vw] md:w-[85vw] mx-auto">
         <div>
           <Image
             src="/alien2.png"

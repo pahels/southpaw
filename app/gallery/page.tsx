@@ -81,10 +81,10 @@ export default function GalleryPage() {
         aria-pressed={dayMode}
         aria-label={dayMode ? "Switch to night mode" : "Switch to day mode"}
         onClick={() => setDayMode((s) => !s)}
-        className="fixed top-4 right-4 z-20 inline-flex items-center justify-center w-10 h-10 rounded-full"
-        style={{ background: dayMode ? '#ffffff' : '#000000', color: dayMode ? '#000' : '#fff' }}
+        className="fixed top-4 right-4 z-20 inline-flex items-center justify-center cursor-pointer"
+        style={{ background: 'none', border: 'none', color: dayMode ? '#000' : '#fff', padding: 0, fontSize: '14px', letterSpacing: '0.05em' }}
       >
-        {dayMode ? 'day' : 'nite'}
+        {dayMode ? 'nite' : 'day'}
       </button>
       <div className="max-w-7xl mx-auto">
         <header className="mb-16">
