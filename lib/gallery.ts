@@ -58,7 +58,7 @@ export const galleryItems: GalleryItem[] = [
   {
     slug: "$outhpaw Hoodie",
     title: "$outhpaw Hoodie",
-    price: 150,
+    price: 100,
     cover: "/gallery/southpawhoodie.png",
     images: ["/gallery/southpawhoodie.png"],
     description: "Hoodie",
@@ -93,7 +93,7 @@ export const galleryItems: GalleryItem[] = [
   {
     slug: "Painted Hoodie",
     title: "Painted Hoodie",
-    price: 150,
+    price: 125,
     cover: "/gallery/paintedhoodie.png",
     images: ["/gallery/paintedhoodie.png"],
     description: "Hoodie",
