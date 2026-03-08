@@ -21,7 +21,7 @@ export default function Home() {
   const toggleLabel = isNight ? "day" : "nite";
 
   return (
-    <div className={`${bgClass} min-h-screen flex justify-center items-start relative overflow-hidden`}>
+    <div className={`${bgClass} min-h-screen flex flex-col items-center justify-center md:justify-start relative overflow-hidden`}>
       {/* Toggle button — day/nite text */}
       <button
         onClick={cycle}
@@ -52,7 +52,7 @@ export default function Home() {
       )}
 
       {/* Alien on top */}
-      <Link href="/gallery" className="group block relative z-10 w-[90vw] md:w-[85vw] mx-auto">
+      <Link href="/gallery" className="group block relative z-10 w-[90vw] md:w-[85vw]">
         <div>
           <Image
             src="/alien2.png"
