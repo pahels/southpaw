@@ -53,7 +53,30 @@ export default function Home() {
 
       {/* Alien on top */}
       <Link href="/gallery" className="group block relative z-10 w-full md:w-[85vw]">
-        <div>
+        {/* Mobile: two aliens — top normal, bottom flipped + color inverted */}
+        <div className="flex flex-col md:hidden">
+          <Image
+            src="/alien2.png"
+            alt="Enter Gallery"
+            width={3600}
+            height={3600}
+            priority
+            style={invertAlien ? { filter: 'invert(1) hue-rotate(180deg) saturate(1.05)' } : undefined}
+            className="w-full h-auto object-contain transition-transform duration-300 group-hover:scale-105 cursor-pointer"
+          />
+          <Image
+            src="/alien2.png"
+            alt=""
+            width={3600}
+            height={3600}
+            style={invertAlien
+              ? { transform: 'scaleY(-1)' }
+              : { filter: 'invert(1) hue-rotate(180deg) saturate(1.05)', transform: 'scaleY(-1)' }}
+            className="w-full h-auto object-contain cursor-pointer"
+          />
+        </div>
+        {/* Desktop: single alien */}
+        <div className="hidden md:block">
           <Image
             src="/alien2.png"
             alt="Enter Gallery"
