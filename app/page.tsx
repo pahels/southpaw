@@ -52,7 +52,7 @@ export default function Home() {
       )}
 
       {/* Alien on top */}
-      <Link href="/gallery" className="group block relative z-10 w-full md:w-[85vw]">
+      <Link href="/gallery" className="group block relative z-10 w-full md:w-[85vw] md:mt-0">
         {/* Mobile: two aliens — top normal, bottom flipped + color inverted */}
         <div className="flex flex-col md:hidden">
           <Image
@@ -75,7 +75,7 @@ export default function Home() {
             className="w-full h-auto object-contain cursor-pointer"
           />
         </div>
-        {/* Desktop: single alien */}
+        {/* Desktop: single alien, full size, scrollable */}
         <div className="hidden md:block">
           <Image
             src="/alien2.png"
@@ -84,7 +84,7 @@ export default function Home() {
             height={3600}
             priority
             style={invertAlien ? { filter: 'invert(1) hue-rotate(180deg) saturate(1.05)' } : undefined}
-            className="w-full h-auto object-contain transition-transform duration-300 group-hover:scale-105 cursor-pointer"
+            className="w-full h-auto object-contain object-top transition-transform duration-300 group-hover:scale-105 cursor-pointer"
           />
         </div>
       </Link>
