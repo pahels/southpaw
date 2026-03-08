@@ -9,7 +9,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-mono: var(--font-ibm-plex-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +22,27 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-ibm-plex-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace;
 }
+
+/* Utility: force IBM Plex Mono where Tailwind's font utilities may conflict */
+.font-ibm-mono {
+  font-family: var(--font-ibm-plex-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace;
+}
+
+/* Make everything square: override Tailwind rounded variables and any rounded utilities */
+:root {
+  --rounded-none: 0px;
+  --rounded-sm: 0px;
+  --rounded-md: 0px;
+  --rounded-md-2: 0px;
+  --rounded-lg: 0px;
+  --rounded-xl: 0px;
+  --rounded-2xl: 0px;
+  --rounded-3xl: 0px;
+  --rounded-4xl: 0px;
+  --rounded-full: 0px;
+}
+
+/* Last-resort rule to zero out any border-radius left by utilities */
+* { border-radius: 0 !important; }
