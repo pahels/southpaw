@@ -92,6 +92,9 @@ export default function GalleryPage() {
             My $tuff
           </h1>
           <h2 className="text-sm font-serif leading-tight tracking-tight mb-4 font-ibm-mono">
+            [WEBSITE STILL UNDER CONSTRUCTION]
+          </h2>
+          <h2 className="text-sm font-serif leading-tight tracking-tight mb-4 font-ibm-mono">
             Message for inquiry/purchase: @p4hel, pahel.srivastava@gmail.com
           </h2>
           <div className="mb-6">
