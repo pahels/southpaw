@@ -52,7 +52,7 @@ export default function Home() {
       )}
 
       {/* Alien on top */}
-      <Link href="/gallery" className="group block relative z-10 w-[90vw] md:w-[85vw]">
+      <Link href="/gallery" className="group block relative z-10 w-full md:w-[85vw]">
         <div>
           <Image
             src="/alien2.png"
