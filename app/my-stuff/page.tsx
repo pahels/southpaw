@@ -1,20 +1,14 @@
-import Image from "next/image";
-import Link from "next/link";
+"use client";
+
+import Navbar from "@/app/components/Navbar";
+import { useTheme } from "@/app/components/ThemeProvider";
 
 export default function MyStuff() {
+  const { isDay } = useTheme();
+
   return (
-    <div className="min-h-screen bg-black text-white">
-      <header className="p-4">
-        <Link href="/">
-          <Image
-            src="/alien2.png"
-            alt="Back to Home"
-            width={80}
-            height={80}
-            className="w-8 h-8 object-contain"
-          />
-        </Link>
-      </header>
+    <div className={`min-h-screen ${isDay ? 'bg-white text-black' : 'bg-black text-white'}`}>
+      <Navbar />
 
       <main className="p-6">
         <h1 className="text-2xl font-bold">My Stuff</h1>

@@ -2,34 +2,29 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect } from "react";
+import { useTheme } from "./components/ThemeProvider";
 
 const REPEAT = 12;
-// mode 0: black bg, no text
-// mode 1: white bg, black text visible
-// mode 2: white bg, black text, inverted alien
 
 export default function Home() {
-  const [mode, setMode] = useState(0);
-  const cycle = () => setMode((m) => (m + 1) % 3);
+  const { isDay } = useTheme();
 
-  const bgClass = mode === 0 ? "bg-black" : "bg-white";
-  const showText = false; // disabled for now
-  const invertAlien = mode !== 0; // invert on white backgrounds (modes 1 & 2), normal on black
+  useEffect(() => {
+    const scrollToBottom = () => window.scrollTo({ top: document.documentElement.scrollHeight });
+    scrollToBottom();
+    if (document.readyState !== 'complete') {
+      window.addEventListener('load', scrollToBottom, { once: true });
+    }
+  }, []);
+
+  const bgClass = isDay ? "bg-white" : "bg-black";
+  const showText = false;
+  const invertAlien = isDay;
   const logoFilter = 'invert(0)';
-  const isNight = mode === 0;
-  const toggleLabel = isNight ? "day" : "nite";
 
   return (
     <div className={`${bgClass} min-h-screen flex flex-col items-center justify-center md:justify-start relative overflow-hidden`}>
-      {/* Toggle button — day/nite text */}
-      <button
-        onClick={cycle}
-        className="fixed top-4 right-4 z-[9999] inline-flex items-center justify-center"
-        style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', fontFamily: 'inherit', fontSize: '14px', color: isNight ? 'white' : 'black', letterSpacing: '0.05em' }}
-      >
-        {toggleLabel}
-      </button>
 
       {/* Repeating SOUTHPAW stack behind the alien */}
       {showText && (
@@ -52,7 +47,7 @@ export default function Home() {
       )}
 
       {/* Alien on top */}
-      <Link href="/gallery" className="group block relative z-10 w-full md:w-[85vw] md:mt-0">
+      <Link href="/waitlist" className="group block relative z-10 w-full md:w-[85vw] md:mt-0">
         {/* Mobile: two aliens — top normal, bottom flipped + color inverted */}
         <div className="flex flex-col md:hidden">
           <Image

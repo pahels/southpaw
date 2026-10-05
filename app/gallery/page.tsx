@@ -4,6 +4,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import Navbar from "@/app/components/Navbar";
+import { useTheme } from "@/app/components/ThemeProvider";
 import { galleryItems } from "@/lib/gallery";
 
 const fmt = (n: number) => `$${n.toLocaleString()}`;
@@ -43,7 +45,7 @@ function initialYOffsetFor(slug: string) {
 }
 
 export default function GalleryPage() {
-  const [dayMode, setDayMode] = useState(false);
+  const { isDay: dayMode } = useTheme();
   // scrollY used for parallax drift
   const [scrollY, setScrollY] = useState(0);
   const [isMd, setIsMd] = useState(false);
@@ -75,18 +77,9 @@ export default function GalleryPage() {
   }, []);
 
   return (
-    <div className={`${dayMode ? "bg-white text-black" : "bg-black text-white"} min-h-screen px-8 lg:px-16 py-20 relative`}>
-      {/* Day/nite toggle */}
-      <button
-        aria-pressed={dayMode}
-        aria-label={dayMode ? "Switch to night mode" : "Switch to day mode"}
-        onClick={() => setDayMode((s) => !s)}
-        className="fixed top-4 right-4 z-20 inline-flex items-center justify-center cursor-pointer"
-        style={{ background: 'none', border: 'none', color: dayMode ? '#000' : '#fff', padding: 0, fontSize: '14px', letterSpacing: '0.05em' }}
-      >
-        {dayMode ? 'nite' : 'day'}
-      </button>
-      <div className="max-w-7xl mx-auto">
+    <div className={`${dayMode ? "bg-white text-black" : "bg-black text-white"} min-h-screen relative`}>
+      <Navbar />
+      <div className="max-w-7xl mx-auto px-8 lg:px-16 py-8">
         <header className="mb-16">
           <h1 className="text-5xl font-serif leading-tight tracking-tight mb-4 font-ibm-mono">
             My $tuff
@@ -97,10 +90,6 @@ export default function GalleryPage() {
           <h2 className="text-sm font-serif leading-tight tracking-tight mb-4 font-ibm-mono">
             Message for inquiry/purchase: @p4hel, pahel.srivastava@gmail.com
           </h2>
-          <div className="mb-6">
-            <Link href="/" className={`text-sm mr-4 ${dayMode ? "text-zinc-500 hover:text-black" : "text-zinc-400 hover:text-white"}`}>← Home</Link>
-            <Link href="/gallery" className={`text-sm ${dayMode ? "text-zinc-500 hover:text-black" : "text-zinc-400 hover:text-white"}`}>Gallery</Link>
-          </div>
         </header>
 
         <div className="relative">

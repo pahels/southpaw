@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "./components/ThemeProvider";
+import DayNiteToggle from "./components/DayNiteToggle";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,7 +31,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${ibmPlexMono.variable} antialiased`}
       >
-        {children}
+        <ThemeProvider>
+          {children}
+          <DayNiteToggle />
+        </ThemeProvider>
       </body>
     </html>
   );
